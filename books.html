@@ -1,186 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Reading Journey</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-
+    <title>Book Reviews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
+            font-family: 'Lora', serif;
+            background-color: #1f3a93;
+            color: white;
             margin: 0;
-            font-family: 'Open Sans', sans-serif;
-            background-color: #0d1b2a;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .bio {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
             color: white;
         }
-
-        /* Header bio section */
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #1b263b;
+        .bio h1 {
+            font-size: 2.5rem;
+            color: #6dd5ed;
         }
-
-        header h1 {
-            font-family: 'Lora', serif;
-            font-size: 3em;
-            margin-bottom: 10px;
-            animation: fadeInDown 2s ease-out;
+        .bio p {
+            font-size: 1.1rem;
+            color: #a2d5f2;
         }
-
-        header p {
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8em;
-            animation: fadeIn 2.5s ease-in;
-        }
-
-        /* Book reviews section */
         .books-section {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
             flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 50px 20px;
         }
-
-        .book-card {
-            background-color: #1b263b;
-            border-radius: 8px;
-            margin: 20px;
-            width: 250px;
+        .book {
+            position: relative;
+            width: 200px;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .book:hover {
+            transform: scale(1.1);
+        }
+        .book img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .book h3 {
+            color: #a2d5f2;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .animation-container {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.9);
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        .animation-container .book-open-animation {
+            width: 70%;
+            max-width: 600px;
+        }
+        .review-text {
+            display: none;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 700px;
             padding: 20px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .book-card:hover {
-            transform: scale(1.05);
-        }
-
-        .book-card img {
-            max-width: 100%;
-            height: auto;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
         }
-
-        .book-card img:hover {
-            transform: rotate(5deg);
-        }
-
-        .book-card h2 {
-            font-family: 'Lora', serif;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .book-card p {
-            font-size: 1em;
-            color: #dbe2ef;
-            line-height: 1.6em;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #1b263b;
-        }
-
-        footer p {
-            font-size: 1em;
-            color: #dbe2ef;
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Bio Section -->
-    <header>
-        <h1>My Reading Journey</h1>
-        <p>
-            It all started when a friend handed me a book one day, and it changed everything. That first book opened a new world,
-            a place where stories became more than just words—they became reflections, adventures, and life lessons. I read because
-            it helps me understand not only the world but also myself. Books have become my companions, my teachers, and sometimes,
-            my escape. Now, I'm always looking for that next great read to challenge my thinking and stir my emotions.
-        </p>
-    </header>
+    <div class="bio">
+        <h1>My Journey into Books</h1>
+        <p>It all began with a spark—a friend handed me a book, and that simple act opened up an entire world. Now, books are more than just stories; they're my source of inspiration, knowledge, and a little bit of magic in everyday life.</p>
+    </div>
 
-    <!-- Books Section -->
-    <section class="books-section">
-        <!-- The Alchemist -->
-        <div class="book-card">
-            <img src="https://m.media-amazon.com/images/I/51Z0nLAfLmL.jpg" alt="The Alchemist">
-            <h2>The Alchemist</h2>
-            <p>
-                A magical journey of self-discovery that inspired me to follow my dreams, no matter how impossible they seem. Paulo Coelho's
-                writing is both simple and profound, and this story feels like a whispered secret that speaks to the soul.
-            </p>
+    <div class="books-section">
+        <div class="book" onclick="openReview('review1')">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/51Z0nLAfLmL._SX327_BO1,204,203,200_.jpg" alt="The Alchemist">
+            <h3>The Alchemist</h3>
         </div>
-
-        <!-- The Secret -->
-        <div class="book-card">
-            <img src="https://m.media-amazon.com/images/I/91iUkcrwY5L._AC_UF1000,1000_QL80_.jpg" alt="The Secret">
-            <h2>The Secret</h2>
-            <p>
-                This book reshaped the way I think about life. Rhonda Byrne's philosophy about the power of positive thinking and manifestation
-                helped me realize that the universe is a reflection of what we believe and project.
-            </p>
+        <div class="book" onclick="openReview('review2')">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/81J1HStQjuL.jpg" alt="The Secret">
+            <h3>The Secret</h3>
         </div>
-
-        <!-- The Midnight Library -->
-        <div class="book-card">
-            <img src="https://m.media-amazon.com/images/I/81AR2lKZx-L._AC_UF1000,1000_QL80_.jpg" alt="The Midnight Library">
-            <h2>The Midnight Library</h2>
-            <p>
-                Matt Haig's story made me question the countless 'what ifs' in life. It reminded me that while we all have regrets, we also have
-                the power to choose and shape the path ahead.
-            </p>
+        <div class="book" onclick="openReview('review3')">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/71aFt4+OTOL.jpg" alt="Midnight Library">
+            <h3>Midnight Library</h3>
         </div>
-
-        <!-- Atomic Habits -->
-        <div class="book-card">
-            <img src="https://m.media-amazon.com/images/I/91bYsX41DVL._AC_UF1000,1000_QL80_.jpg" alt="Atomic Habits">
-            <h2>Atomic Habits</h2>
-            <p>
-                James Clear's book is a game-changer. It made me realize that success isn't about huge leaps but small, consistent steps.
-                It's the habits we form, one decision at a time, that determine our future.
-            </p>
+        <div class="book" onclick="openReview('review4')">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL.jpg" alt="Atomic Habits">
+            <h3>Atomic Habits</h3>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 My Reading Journey. All rights reserved.</p>
-    </footer>
+    <!-- Animation Container -->
+    <div class="animation-container" id="animation-container">
+        <div class="book-open-animation">
+            <img src="img/book-opening.gif" alt="Book Opening Animation" id="book-animation">
+        </div>
+        <span class="close" onclick="closeReview()">×</span>
+        <div class="review-text" id="review1">
+            <p><strong>The Alchemist</strong> - A tale about following your dreams, no matter the obstacles. It reminds us that the journey is as important as the destination. A poetic and profound reflection on life.</p>
+        </div>
+        <div class="review-text" id="review2">
+            <p><strong>The Secret</strong> - This book is all about the power of positivity and belief. If you can visualize and believe, you can attract anything. A thought-provoking introduction to the law of attraction.</p>
+        </div>
+        <div class="review-text" id="review3">
+            <p><strong>Midnight Library</strong> - What if you could live your life differently? This story explores parallel lives and the choices we make. An emotional and philosophical ride through regret, hope, and possibility.</p>
+        </div>
+        <div class="review-text" id="review4">
+            <p><strong>Atomic Habits</strong> - A blueprint for making lasting change through small, daily habits. This book is essential for anyone looking to improve their life step by step. It’s practical and motivational.</p>
+        </div>
+    </div>
+
+    <script>
+        function openReview(reviewId) {
+            document.getElementById('animation-container').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById(reviewId).style.display = 'block';
+            }, 1000); // Simulate book pages turning animation
+        }
+
+        function closeReview() {
+            document.getElementById('animation-container').style.display = 'none';
+            const reviews = document.querySelectorAll('.review-text');
+            reviews.forEach(review => review.style.display = 'none');
+        }
+    </script>
 
 </body>
-
 </html>
