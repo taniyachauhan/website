@@ -53,7 +53,7 @@
             display: flex;
             margin: 0;
             padding: 0;
-            align-items: center; /* Center vertically */
+            align-items: center;
         }
 
         nav ul li {
@@ -61,14 +61,14 @@
         }
 
         nav .social-links {
-            display: flex; /* Use flex to align logos */
-            align-items: center; /* Center logos vertically */
+            display: flex;
+            align-items: center;
         }
 
         .social-logo {
-            width: 20px; /* Adjust logo size */
-            height: auto; /* Maintain aspect ratio */
-            margin-left: 10px; /* Space between logos */
+            width: 20px;
+            height: auto;
+            margin-left: 10px;
         }
 
         nav ul li a {
@@ -79,61 +79,65 @@
 
         /* Main content styling */
         main {
-            padding: 100px 50px;
+            padding: 100px 100px;
             z-index: 1;
             position: relative;
             background-color: white;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* Style the header background */
         header.intro-header {
             position: relative;
             height: 100vh;
-            display: flex; /* Use flexbox for layout */
-            align-items: center; /* Center content vertically */
-            padding: 0 50px; /* Padding to keep content away from edges */
-            background: none; /* No background for the header */
+            display: flex;
+            align-items: center;
+            padding: 0 100px;
+            background: none;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .text-container {
-            flex: 1; /* Allow the text container to take available space */
-            text-align: left; /* Align text to the left */
-            padding: 20px; /* Padding around text */
-            max-width: 50%; /* Adjusted width to balance with the image */
-            z-index: 1; /* Ensure the text container is above the image */
+            flex: 1;
+            text-align: left;
+            padding: 20px;
+            max-width: 45%;
+            z-index: 1;
             margin-top: 130px;
         }
 
         .image-container {
-            flex: 1; /* Allow the image container to take available space */
-            background: url('img/sunset.png') no-repeat center center; /* Sunset image */
-            background-size: cover; /* Ensure the image covers the area */
-            height: 90%; /* Full height */
-            max-width: 40%; /* Adjust this value to make the image smaller, e.g., 40% */
-            margin-left: 200px;
+            flex: 1;
+            background: url('img/sunset.png') no-repeat center center;
+            background-size: cover;
+            height: 90%;
+            max-width: 35%;
+            margin-left: 150px;
             margin-top: 130px;
         }
 
         /* Adjust the styling for the "Take a look around" section */
         .bottom-section {
-            display: inline-flex; /* Align text and image horizontally */
-            align-items: center;  /* Vertically center the items */
-            gap: 10px;  /* Space between the text and the image */
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .bottom-section img {
-            width: 100px; /* Set the milk-transformed image size smaller */
+            width: 100px;
             height: auto;
         }
 
         h1 {
-            font-size: 3em; /* Increased font size */
+            font-size: 3em;
             margin-bottom: 10px;
         }
 
         p {
             font-size: 1.2em;
-            margin-bottom: 20px; /* Space between paragraphs */
+            margin-bottom: 20px;
         }
 
         /* Footer */
@@ -144,14 +148,20 @@
 
         .separator {
             margin: 0 8px;
-            color: rgba(9, 12, 67); /* Match the text color */
+            color: rgba(9, 12, 67);
         }
 
         nav .social-links a {
-            margin-left: 12px; /* Reduce margin between social icons */
-            color: rgba(9, 12, 67); /* Set social links color to match the previous nav color */
+            margin-left: 12px;
+            color: rgba(9, 12, 67);
             text-decoration: none;
-            font-size: 1.3em; /* Decrease icon size slightly */
+            font-size: 1.3em;
+        }
+
+        /* Blog Section */
+        .blog-section {
+            max-width: 100%;
+            padding: 0 50px;
         }
     </style>
 </head>
@@ -165,13 +175,13 @@
             <li><a href="about.html">About</a></li>
             <li><a href="blogpage.html">Resume</a></li>
             <li><a href="post.html">Blog</a></li>
-            <span class="separator">|</span> <!-- Separator -->
+            <span class="separator">|</span>
             <li class="social-links">
                 <a href="https://www.linkedin.com" target="_blank">
-                    <img src="img/linkedin.png" alt="LinkedIn" class="social-logo"> <!-- LinkedIn logo -->
+                    <img src="img/linkedin.png" alt="LinkedIn" class="social-logo">
                 </a>
                 <a href="https://twitter.com" target="_blank">
-                    <img src="img/twitter.png" alt="X" class="social-logo"> <!-- X (Twitter) logo -->
+                    <img src="img/twitter.png" alt="X" class="social-logo">
                 </a>
             </li>
         </ul>
@@ -184,8 +194,7 @@
             <p>Welcome to my space! </p>
             <p>I'm passionate about coding, design, and creating innovative solutions to complex problems. 
                With a love for creativity, I'm always looking to learn something new and explore different fields of technology.
-               When I'm not working, you’ll find me reading, hiking, or playing sports.</p>
-            <!-- Take a look around and Image next to each other -->
+               When I'm not working, you'll find me reading, hiking, or playing sports.</p>
             <div class="bottom-section">
                 <p>Take a look around!</p>
                 <img src="img/milk-transformed.png" alt="Milk Transformed Image">
@@ -195,60 +204,62 @@
     </header>
 
     <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Man must explore, and this is exploration at its greatest
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Problems look mighty small from 150 miles up
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">TaCha</a> on September 24, 2024</p>
+    <div class="blog-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">
+                                Man must explore, and this is exploration at its greatest
+                            </h2>
+                            <h3 class="post-subtitle">
+                                Problems look mighty small from 150 miles up
+                            </h3>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#">TaCha</a> on September 24, 2024</p>
+                    </div>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">
+                                I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
+                            </h2>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#">TaCha</a> on September 18, 2024</p>
+                    </div>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">
+                                Science has not yet mastered prophecy
+                            </h2>
+                            <h3 class="post-subtitle">
+                                We predict too much for the next year and yet far too little for the next ten.
+                            </h3>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#">TaCha</a> on August 24, 2024</p>
+                    </div>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">
+                                Failure is not an option
+                            </h2>
+                            <h3 class="post-subtitle">
+                                Many say exploration is part of our destiny, but it's actually our duty to future generations.
+                            </h3>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#">TaCha</a> on July 8, 2014</p>
+                    </div>
+                    <hr>
+                    <!-- Pager -->
+                    <ul class="pager">
+                        <li class="next">
+                            <a href="#">Older Posts &rarr;</a>
+                        </li>
+                    </ul>
                 </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-                        </h2>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">TaCha</a> on September 18, 2024</p>
-                </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Science has not yet mastered prophecy
-                        </h2>
-                        <h3 class="post-subtitle">
-                            We predict too much for the next year and yet far too little for the next ten.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">TaCha</a> on August 24, 2024</p>
-                </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Failure is not an option
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">TaCha</a> on July 8, 2014</p>
-                </div>
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
