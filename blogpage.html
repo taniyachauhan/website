@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blog</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --secondary-color: #666666;
+            --hover-color: #000000;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --secondary-color: #bbbbbb;
+            --hover-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle, .search-btn, .tags-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .theme-toggle:hover, .search-btn:hover, .tags-btn:hover {
+            color: var(--hover-color);
+        }
+
+        /* Main Content */
+        .intro {
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro p {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--hover-color);
+        }
+
+        /* Blog Posts */
+        .blog-post {
+            background-color: var(--bg-color);
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-2px);
+        }
+
+        .blog-post h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post p {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .post-meta {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="blog-title">Your Blog</a>
+        <div class="header-actions">
+            <button class="search-btn" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="tags-btn" aria-label="Tags">
+                <i class="fas fa-tags"></i>
+            </button>
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Hi I'm [Your Name],</h1>
+            <p>I'm a [your role] at [your institution] working on [your interests]. I write about [your topics], and share my experiences.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Website"><i class="fas fa-link"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Medium"><i class="fab fa-medium"></i></a>
+            </div>
+        </section>
+
+        <section class="blog-posts">
+            <article class="blog-post">
+                <h2>Your Latest Project</h2>
+                <p>A brief description of your latest project or research work. Explain what you're working on and why it matters.</p>
+                <div class="post-meta">
+                    October 28, 2024 · 5 min read
+                </div>
+            </article>
+
+            <article class="blog-post">
+                <h2>Research Insights</h2>
+                <p>Share your insights about your field of study or recent developments in your area of expertise.</p>
+                <div class="post-meta">
+                    October 25, 2024 · 8 min read
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Your Name · Powered by <a href="#">Your Framework</a></p>
+    </footer>
+
+    <script>
+        // Dark mode toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+    </script>
+</body>
+</html>
