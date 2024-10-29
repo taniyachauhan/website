@@ -53,7 +53,7 @@
             display: flex;
             margin: 0;
             padding: 0;
-            align-items: center;
+            align-items: center; /* Center vertically */
         }
 
         nav ul li {
@@ -61,14 +61,14 @@
         }
 
         nav .social-links {
-            display: flex;
-            align-items: center;
+            display: flex; /* Use flex to align logos */
+            align-items: center; /* Center logos vertically */
         }
 
         .social-logo {
-            width: 20px;
-            height: auto;
-            margin-left: 10px;
+            width: 20px; /* Adjust logo size */
+            height: auto; /* Maintain aspect ratio */
+            margin-left: 10px; /* Space between logos */
         }
 
         nav ul li a {
@@ -79,65 +79,61 @@
 
         /* Main content styling */
         main {
-            padding: 100px 100px;
+            padding: 100px 70px; /* Increased side padding from 50px to 70px */
             z-index: 1;
             position: relative;
             background-color: white;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         /* Style the header background */
         header.intro-header {
             position: relative;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 100px;
-            background: none;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center content vertically */
+            padding: 0 70px; /* Increased padding from 50px to 70px */
+            background: none; /* No background for the header */
         }
 
         .text-container {
-            flex: 1;
-            text-align: left;
-            padding: 20px;
-            max-width: 45%;
-            z-index: 1;
+            flex: 1; /* Allow the text container to take available space */
+            text-align: left; /* Align text to the left */
+            padding: 20px; /* Padding around text */
+            max-width: 50%; /* Adjusted width to balance with the image */
+            z-index: 1; /* Ensure the text container is above the image */
             margin-top: 130px;
         }
 
         .image-container {
-            flex: 1;
-            background: url('img/sunset.png') no-repeat center center;
-            background-size: cover;
-            height: 90%;
-            max-width: 35%;
-            margin-left: 150px;
+            flex: 1; /* Allow the image container to take available space */
+            background: url('img/sunset.png') no-repeat center center; /* Sunset image */
+            background-size: cover; /* Ensure the image covers the area */
+            height: 90%; /* Full height */
+            max-width: 40%; /* Adjust this value to make the image smaller, e.g., 40% */
+            margin-left: 200px;
             margin-top: 130px;
         }
 
         /* Adjust the styling for the "Take a look around" section */
         .bottom-section {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            display: inline-flex; /* Align text and image horizontally */
+            align-items: center; /* Vertically center the items */
+            gap: 10px; /* Space between the text and the image */
         }
 
         .bottom-section img {
-            width: 100px;
+            width: 100px; /* Set the milk-transformed image size smaller */
             height: auto;
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 3em; /* Increased font size */
             margin-bottom: 10px;
         }
 
         p {
             font-size: 1.2em;
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Space between paragraphs */
         }
 
         /* Footer */
@@ -148,20 +144,14 @@
 
         .separator {
             margin: 0 8px;
-            color: rgba(9, 12, 67);
+            color: rgba(9, 12, 67); /* Match the text color */
         }
 
         nav .social-links a {
-            margin-left: 12px;
-            color: rgba(9, 12, 67);
+            margin-left: 12px; /* Reduce margin between social icons */
+            color: rgba(9, 12, 67); /* Set social links color to match the previous nav color */
             text-decoration: none;
-            font-size: 1.3em;
-        }
-
-        /* Blog Section */
-        .blog-section {
-            max-width: 100%;
-            padding: 0 50px;
+            font-size: 1.3em; /* Decrease icon size slightly */
         }
     </style>
 </head>
@@ -175,109 +165,108 @@
             <li><a href="about.html">About</a></li>
             <li><a href="blogpage.html">Resume</a></li>
             <li><a href="post.html">Blog</a></li>
-            <span class="separator">|</span>
+            <span class="separator">|</span> <!-- Separator -->
             <li class="social-links">
                 <a href="https://www.linkedin.com" target="_blank">
-                    <img src="img/linkedin.png" alt="LinkedIn" class="social-logo">
+                    <img src="img/linkedin.png" alt="LinkedIn" class="social-logo"> <!-- LinkedIn logo -->
                 </a>
                 <a href="https://twitter.com" target="_blank">
-                    <img src="img/twitter.png" alt="X" class="social-logo">
+                    <img src="img/twitter.png" alt="X" class="social-logo"> <!-- X (Twitter) logo -->
                 </a>
-            </li>
-        </ul>
-    </nav>
+             </li>
+         </ul>
+     </nav>
 
-    <!-- Page Header -->
-    <header class="intro-header">
-        <div class="text-container">
-            <h1>Hello! <span class="emoji">👋</span></h1>
-            <p>Welcome to my space! </p>
-            <p>I'm passionate about coding, design, and creating innovative solutions to complex problems. 
-               With a love for creativity, I'm always looking to learn something new and explore different fields of technology.
-               When I'm not working, you'll find me reading, hiking, or playing sports.</p>
-            <div class="bottom-section">
-                <p>Take a look around!</p>
-                <img src="img/milk-transformed.png" alt="Milk Transformed Image">
-            </div>
-        </div>
-        <div class="image-container"></div>
-    </header>
+     <!-- Page Header -->
+     <header class="intro-header">
+         <div class="text-container">
+             <h1>Hello! <span class="emoji">👋</span></h1>
+             <p>Welcome to my space! </p>
+             <p>I'm passionate about coding, design, and creating innovative solutions to complex problems. 
+                With a love for creativity, I'm always looking to learn something new and explore different fields of technology.
+                When I'm not working, you’ll find me reading, hiking, or playing sports.</p>
+             <!-- Take a look around and Image next to each other -->
+             <div class="bottom-section">
+                 <p>Take a look around!</p>
+                 <img src="img/milk-transformed.png" alt="Milk Transformed Image">
+             </div>
+         </div>
+         <div class="image-container"></div>
+     </header>
 
-    <!-- Main Content -->
-    <div class="blog-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                Man must explore, and this is exploration at its greatest
-                            </h2>
-                            <h3 class="post-subtitle">
-                                Problems look mighty small from 150 miles up
-                            </h3>
-                        </a>
-                        <p class="post-meta">Posted by <a href="#">TaCha</a> on September 24, 2024</p>
-                    </div>
-                    <hr>
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-                            </h2>
-                        </a>
-                        <p class="post-meta">Posted by <a href="#">TaCha</a> on September 18, 2024</p>
-                    </div>
-                    <hr>
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                Science has not yet mastered prophecy
-                            </h2>
-                            <h3 class="post-subtitle">
-                                We predict too much for the next year and yet far too little for the next ten.
-                            </h3>
-                        </a>
-                        <p class="post-meta">Posted by <a href="#">TaCha</a> on August 24, 2024</p>
-                    </div>
-                    <hr>
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                Failure is not an option
-                            </h2>
-                            <h3 class="post-subtitle">
-                                Many say exploration is part of our destiny, but it's actually our duty to future generations.
-                            </h3>
-                        </a>
-                        <p class="post-meta">Posted by <a href="#">TaCha</a> on July 8, 2014</p>
-                    </div>
-                    <hr>
-                    <!-- Pager -->
-                    <ul class="pager">
-                        <li class="next">
-                            <a href="#">Older Posts &rarr;</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+     <!-- Main Content -->
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                 <div class="post-preview">
+                     <a href="post.html">
+                         <h2 class="post-title">
+                             Man must explore, and this is exploration at its greatest
+                         </h2>
+                         <h3 class="post-subtitle">
+                             Problems look mighty small from 150 miles up
+                         </h3>
+                     </a>
+                     <p class="post-meta">Posted by <a href="#">TaCha</a> on September 24, 2024</p>
+                 </div>
+                 <hr>
+                 <div class="post-preview">
+                     <a href="post.html">
+                         <h2 class="post-title">
+                             I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
+                         </h2>
+                     </a>
+                     <p class="post-meta">Posted by <a href="#">TaCha</a> on September 18, 2024</p>
+                 </div>
+                 <hr>
+                 <div class="post-preview">
+                     <a href="post.html">
+                         <h2 class="post-title">
+                             Science has not yet mastered prophecy
+                         </h2>
+                         <h3 class="post-subtitle">
+                             We predict too much for the next year and yet far too little for the next ten.
+                         </h3>
+                     </a>
+                     <p class="post-meta">Posted by <a href="#">TaCha</a> on August 24, 2024</p>
+                 </div>
+                 <hr>
+                 <div class="post-preview">
+                     <a href="post.html">
+                         <h2 class="post-title">
+                             Failure is not an option
+                         </h2>
+                         <h3 class="post-subtitle">
+                             Many say exploration is part of our destiny, but it’s actually our duty to future generations.
+                         </h3>
+                     </a>
+                     <p class="post-meta">Posted by <a href="#">TaCha</a> on July 8, 2014</p>
+                 </div>
+                 <hr>
+                 <!-- Pager -->
+                 <ul class="pager">
+                     <li class="next">
+                         <a href="#">Older Posts &rarr;</a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </div>
 
-    <footer>
-        <div class="container">
-            <p>Copyright &copy; TaCha</p>
-        </div>
-    </footer>
+     <footer>
+         <div class="container">
+             <p>Copyright &copy; TaCha</p>
+         </div>
+     </footer>
 
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+     <!-- jQuery -->
+     <script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+     <!-- Bootstrap Core JavaScript -->
+     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Custom JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+     <!-- Custom JavaScript -->
+     <script src="js/clean-blog.min.js"></script>
 
 </body>
 
