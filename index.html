@@ -26,82 +26,121 @@
             font-family: Arial, sans-serif;
             background: white;
             color: black;
-            margin: 40px;
         }
 
+        /* Adjust the Navigation Bar */
         nav {
             background-color: white;
+            color: rgba(9, 12, 67);
             padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: fixed;
             top: 0;
-            width: calc(100% - 80px);
+            width: 100%;
             z-index: 1;
         }
 
-        .logo {
-            font-size: 20px;
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
             color: rgba(9, 12, 67);
         }
 
         nav ul {
-            display: flex;
             list-style: none;
+            display: flex;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
 
         nav ul li {
             margin-right: 15px;
         }
 
-        nav .social-links img {
-            width: 18px;
+        nav .social-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .social-logo {
+            width: 20px;
+            height: auto;
             margin-left: 10px;
         }
 
-        main {
-            max-width: 800px;
-            margin: 120px auto;
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
+        nav ul li a {
+            color: rgba(9, 12, 67);
+            text-decoration: none;
+            font-size: 0.9em;
         }
 
+        /* Main content styling */
+        main {
+            padding: 100px 150px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1200px;
+            z-index: 1;
+            position: relative;
+            background-color: white;
+        }
+
+        /* Style the header background */
         header.intro-header {
+            position: relative;
+            height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 0 50px; /* Adjusted padding */
+            background: none;
         }
 
         .text-container {
             flex: 1;
-            margin-right: 15px;
-            margin-left: 15px;
-            font-size: 0.9em;
+            text-align: left;
+            padding-right: 20px; /* Reduced padding to decrease space between text and image */
+            max-width: 50%; /* Adjusted width */
+            z-index: 1;
+            margin-top: 130px;
         }
 
         .image-container {
             flex: 1;
             background: url('img/sunset.png') no-repeat center center;
             background-size: cover;
-            height: 250px;
-            width: 250px;
+            height: 90%;
+            max-width: 40%; /* Adjusted width */
+            margin-left: 50px; /* Added margin to increase space between the image and the right side */
+            margin-top: 130px;
+        }
+
+        .bottom-section {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bottom-section img {
+            width: 100px;
+            height: auto;
         }
 
         h1 {
-            font-size: 2em;
+            font-size: 3em;
+            margin-bottom: 10px;
         }
 
         p {
-            font-size: 1em;
+            font-size: 1.2em;
+            margin-bottom: 20px;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 20px 0;
-            margin-top: 40px;
         }
 
         .separator {
@@ -135,36 +174,98 @@
                 <a href="https://twitter.com" target="_blank">
                     <img src="img/twitter.png" alt="X" class="social-logo">
                 </a>
-            </li>
-        </ul>
-    </nav>
+             </li>
+         </ul>
+     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <header class="intro-header">
-            <div class="text-container">
-                <h1>Hello! <span class="emoji">👋</span></h1>
-                <p>Welcome to my space! I'm passionate about coding, design, and innovative solutions. When I'm not working, you’ll find me exploring tech, reading, or playing sports.</p>
-            </div>
-            <div class="image-container"></div>
-        </header>
-    </main>
+     <!-- Page Header -->
+     <header class="intro-header">
+         <div class="text-container">
+             <h1>Hello! <span class="emoji">👋</span></h1>
+             <p>Welcome to my space!</p>
+             <p>I'm passionate about coding, design, and creating innovative solutions to complex problems.
+                With a love for creativity, I'm always looking to learn something new and explore different fields of technology.
+                When I'm not working, you’ll find me reading, hiking, or playing sports.</p>
+             <div class="bottom-section">
+                 <p>Take a look around!</p>
+                 <img src="img/milk-transformed.png" alt="Milk Transformed Image">
+             </div>
+         </div>
+         <div class="image-container"></div>
+     </header>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>Copyright &copy; TaCha</p>
-        </div>
-    </footer>
+     <!-- Main Content -->
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                 <div class="post-preview">
+                     <a href="post.html">
+                         <h2 class="post-title">
+                             Man must explore, and this is exploration at its greatest
+                         </h2>
+                         <h3 class="post-subtitle">
+                             Problems look mighty small from 150 miles up
+                         </h3>
+                     </a>
+                     <p class="post-meta">Posted by <a href="#">TaCha</a> on September 24, 2024</p>
+                 </div>
+                 <hr>
+                 <div class="post-preview">
+                     <a href="post.html">
+                         <h2 class="post-title">
+                             I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
+                         </h2>
+                     </a>
+                     <p class="post-meta">Posted by <a href="#">TaCha</a> on September 18, 2024</p>
+                 </div>
+                 <hr>
+                 <div class="post-preview">
+                     <a href="post.html">
+                         <h2 class="post-title">
+                             Science has not yet mastered prophecy
+                         </h2>
+                         <h3 class="post-subtitle">
+                             We predict too much for the next year and yet far too little for the next ten.
+                         </h3>
+                     </a>
+                     <p class="post-meta">Posted by <a href="#">TaCha</a> on August 24, 2024</p>
+                 </div>
+                 <hr>
+                 <div class="post-preview">
+                     <a href="post.html">
+                         <h2 class="post-title">
+                             Failure is not an option
+                         </h2>
+                         <h3 class="post-subtitle">
+                             Many say exploration is part of our destiny, but it’s actually our duty to future generations.
+                         </h3>
+                     </a>
+                     <p class="post-meta">Posted by <a href="#">TaCha</a> on July 8, 2014</p>
+                 </div>
+                 <hr>
+                 <ul class="pager">
+                     <li class="next">
+                         <a href="#">Older Posts &rarr;</a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </div>
 
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+     <footer>
+         <div class="container">
+             <p>Copyright &copy; TaCha</p>
+         </div>
+     </footer>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+     <!-- jQuery -->
+     <script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Custom JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+     <!-- Bootstrap Core JavaScript -->
+     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+     <!-- Custom JavaScript -->
+     <script src="js/clean-blog.min.js"></script>
 
 </body>
 
