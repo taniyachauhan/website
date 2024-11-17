@@ -53,7 +53,7 @@
             display: flex;
             margin: 0;
             padding: 0;
-            align-items: center; /* Center vertically */
+            align-items: center;
         }
 
         nav ul li {
@@ -61,14 +61,14 @@
         }
 
         nav .social-links {
-            display: flex; /* Use flex to align logos */
-            align-items: center; /* Center logos vertically */
+            display: flex;
+            align-items: center;
         }
 
         .social-logo {
-            width: 20px; /* Adjust logo size */
-            height: auto; /* Maintain aspect ratio */
-            margin-left: 10px; /* Space between logos */
+            width: 20px;
+            height: auto;
+            margin-left: 10px;
         }
 
         nav ul li a {
@@ -79,10 +79,10 @@
 
         /* Main content styling */
         main {
-            padding: 100px 120px; /* Increase side padding for more central positioning */
+            padding: 100px 150px;
             margin-left: auto;
             margin-right: auto;
-            max-width: 1200px; /* Limit the max width for better centering */
+            max-width: 1200px;
             z-index: 1;
             position: relative;
             background-color: white;
@@ -92,54 +92,52 @@
         header.intro-header {
             position: relative;
             height: 100vh;
-            display: flex; /* Use flexbox for layout */
-            align-items: center; /* Center content vertically */
-            padding: 0 70px; /* Increased padding from 50px to 70px */
-            background: none; /* No background for the header */
+            display: flex;
+            align-items: center;
+            padding: 0 50px; /* Reduced padding */
+            background: none;
         }
 
         .text-container {
-            flex: 1; /* Allow the text container to take available space */
-            text-align: left; /* Align text to the left */
-            padding: 0 100px; /* Padding around text */
-            max-width: 50%; /* Adjusted width to balance with the image */
-            z-index: 1; /* Ensure the text container is above the image */
+            flex: 1;
+            text-align: left;
+            padding: 0 40px; /* Reduced padding */
+            max-width: 45%; /* Adjusted width */
+            z-index: 1;
             margin-top: 130px;
         }
 
         .image-container {
-            flex: 1; /* Allow the image container to take available space */
-            background: url('img/sunset.png') no-repeat center center; /* Sunset image */
-            background-size: cover; /* Ensure the image covers the area */
-            height: 90%; /* Full height */
-            max-width: 40%; /* Adjust this value to make the image smaller, e.g., 40% */
-            margin-left: 500px;
+            flex: 1;
+            background: url('img/sunset.png') no-repeat center center;
+            background-size: cover;
+            height: 90%;
+            max-width: 45%; /* Adjusted width */
+            margin-left: 30px; /* Reduced margin */
             margin-top: 130px;
         }
 
-        /* Adjust the styling for the "Take a look around" section */
         .bottom-section {
-            display: inline-flex; /* Align text and image horizontally */
-            align-items: center; /* Vertically center the items */
-            gap: 10px; /* Space between the text and the image */
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .bottom-section img {
-            width: 100px; /* Set the milk-transformed image size smaller */
+            width: 100px;
             height: auto;
         }
 
         h1 {
-            font-size: 3em; /* Increased font size */
+            font-size: 3em;
             margin-bottom: 10px;
         }
 
         p {
             font-size: 1.2em;
-            margin-bottom: 20px; /* Space between paragraphs */
+            margin-bottom: 20px;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 20px 0;
@@ -147,14 +145,14 @@
 
         .separator {
             margin: 0 8px;
-            color: rgba(9, 12, 67); /* Match the text color */
+            color: rgba(9, 12, 67);
         }
 
         nav .social-links a {
-            margin-left: 12px; /* Reduce margin between social icons */
-            color: rgba(9, 12, 67); /* Set social links color to match the previous nav color */
+            margin-left: 12px;
+            color: rgba(9, 12, 67);
             text-decoration: none;
-            font-size: 1.3em; /* Decrease icon size slightly */
+            font-size: 1.3em;
         }
     </style>
 </head>
@@ -168,13 +166,13 @@
             <li><a href="about.html">About</a></li>
             <li><a href="blogpage.html">Resume</a></li>
             <li><a href="post.html">Blog</a></li>
-            <span class="separator">|</span> <!-- Separator -->
+            <span class="separator">|</span>
             <li class="social-links">
                 <a href="https://www.linkedin.com" target="_blank">
-                    <img src="img/linkedin.png" alt="LinkedIn" class="social-logo"> <!-- LinkedIn logo -->
+                    <img src="img/linkedin.png" alt="LinkedIn" class="social-logo">
                 </a>
                 <a href="https://twitter.com" target="_blank">
-                    <img src="img/twitter.png" alt="X" class="social-logo"> <!-- X (Twitter) logo -->
+                    <img src="img/twitter.png" alt="X" class="social-logo">
                 </a>
              </li>
          </ul>
@@ -184,11 +182,10 @@
      <header class="intro-header">
          <div class="text-container">
              <h1>Hello! <span class="emoji">👋</span></h1>
-             <p>Welcome to my space! </p>
-             <p>I'm passionate about coding, design, and creating innovative solutions to complex problems. 
+             <p>Welcome to my space!</p>
+             <p>I'm passionate about coding, design, and creating innovative solutions to complex problems.
                 With a love for creativity, I'm always looking to learn something new and explore different fields of technology.
                 When I'm not working, you’ll find me reading, hiking, or playing sports.</p>
-             <!-- Take a look around and Image next to each other -->
              <div class="bottom-section">
                  <p>Take a look around!</p>
                  <img src="img/milk-transformed.png" alt="Milk Transformed Image">
@@ -246,7 +243,6 @@
                      <p class="post-meta">Posted by <a href="#">TaCha</a> on July 8, 2014</p>
                  </div>
                  <hr>
-                 <!-- Pager -->
                  <ul class="pager">
                      <li class="next">
                          <a href="#">Older Posts &rarr;</a>
