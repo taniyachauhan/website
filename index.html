@@ -111,14 +111,14 @@
             background: url('img/sunset.png') no-repeat center center;
             background-size: cover;
             height: 75%;
-            max-width: 45%;
-            margin-left: 130px;
+            max-width: 55%;
+            margin-left: 50px;
             margin-top: 90px;
             overflow: hidden;
         }
         .image-caption {
-            max-width: 45%;
-            margin-left: 130px;
+            max-width: 55%;
+            margin-left: 50px;
             text-align: center;
         }
         .bottom-section {
@@ -155,6 +155,8 @@
         .blog-section {
             max-width: 100%;
             padding: 0 50px;
+            max-height: 400px;
+            overflow-y: auto;
         }
         .theme-toggle {
             margin-left: 10px;
@@ -195,14 +197,13 @@
             <p>Welcome to my space!</p>
             <p>I'm passionate about coding, design, and creating innovative solutions to complex problems. With a love for creativity, I'm always looking to learn something new and explore different fields of technology. When I'm not working, you'll find me reading, hiking, or playing sports.</p>
             <p>In a previous life, I wanted to become an F1 driver and rule the Monaco Grand Prix.</p>
-              <p>I come from Himachal, India. This winter, I'm strapping in, falling down, and getting back up while I master snowboarding in Aspen.</p>
+            <p>I come from Himachal, India. This winter, I'm strapping in, falling down, and getting back up while I master snowboarding in Aspen.</p>
             <div class="bottom-section">
                 <p>Take a look around!</p>
                 <img src="img/milk-transformed.png" alt="Milk Transformed Image">
             </div>
         </div>
         <div class="image-container"></div>
-        
         <div class="image-caption">Hi, I'm Taniya</div>
     </header>
     <div class="blog-section">
@@ -260,7 +261,6 @@
     <script>
         const themeIcon = document.getElementById('theme-icon');
         let isDarkMode = false;
-
         function toggleTheme() {
             isDarkMode = !isDarkMode;
             if (isDarkMode) {
@@ -271,7 +271,6 @@
                 themeIcon.classList.replace('fa-sun', 'fa-moon');
             }
         }
-
         themeIcon.addEventListener('click', toggleTheme);
     </script>
 </body>
