@@ -115,11 +115,15 @@
             margin-left: 130px;
             margin-top: 90px;
             overflow: hidden;
+            position: relative;
         }
         .image-caption {
-            max-width: 45%;
-            margin-left: 130px;
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
             text-align: center;
+            padding: 10px 0;
         }
         .bottom-section {
             display: inline-flex;
@@ -155,6 +159,8 @@
         .blog-section {
             max-width: 100%;
             padding: 0 50px;
+            height: 400px;
+            overflow-y: auto;
         }
         .theme-toggle {
             margin-left: 10px;
@@ -201,8 +207,9 @@
                 <img src="img/milk-transformed.png" alt="Milk Transformed Image">
             </div>
         </div>
-        <div class="image-container"></div>
-        <div class="image-caption">Hi, I'm Taniya</div>
+        <div class="image-container">
+            <div class="image-caption">Hi, I'm Taniya</div>
+        </div>
     </header>
     <div class="blog-section">
         <div class="container">
