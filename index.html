@@ -81,106 +81,98 @@
             font-size: 0.9em;
         }
         main {
-            padding-top: 60px; /* Adjusted padding */
+            padding: 60px 60px;
             z-index: 1;
             position: relative;
             background-color: var(--bg-color);
-            max-width: 1200px; /* Retained max-width */
-            margin-left:auto; 
-			margin-right:auto; 
-			width:auto; /* Centered main content */
+            max-width: 1200px;
+            margin: 0 auto;
         }
         header.intro-header {
             position: relative;
-			height:auto; /* Changed height to auto */
-			display:flex; 
-			align-items:center; 
-			padding-top:20px; /* Reduced top padding */
-			background:none; 
-			max-width:1500px; 
-			margin-top:10px; /* Reduced top margin */
-		}
-		.text-container {
-			flex:1; 
-			text-align:left; 
-			padding-left:50px; 
-			max-width:80%; 
-			z-index:1; 
-		}
-		.image-container {
-			flex:1; 
-			background:url('img/sunset.png') no-repeat center center; 
-			background-size:cover; 
-			height:auto; /* Changed height to auto */
-			max-width:35%; 
-			margin-left:150px; 
-			margin-right:auto; 
-		}
-		.image-caption {
-			position:absolute; 
-			bottom:-30px; 
-			left:-50%; /* Centered caption */
-			width:auto; /* Adjusted width */
-			text-align:center; 
-		}
-		.bottom-section {
-			display:inline-flex; 
-			align-items:center; 
-			gap:10px; 
-		}
-		.bottom-section img {
-			width:auto; /* Adjusted width */
-			height:auto; /* Adjusted height */
-		}
-		h1 {
-			font-size:2.3em; 
-			margin-bottom:.5em; /* Reduced bottom margin */
-		}
-		p {
-			font-size:.9em; /* Adjusted font size */
-			margin-bottom:.5em; /* Reduced bottom margin */
-		}
-		footer {
-			text-align:center; 
-			padding-top:.5em; /* Reduced padding */
-		}
-		.separator {
-			margin:.5em 8px; 
-			color:variables(nav-text-color); 
-		}
-	    nav .social-links a {	
-	        margin-left:.5em;	
-	        color:variables(nav-text-color);	
-	        text-decoration:none;	
-	        font-size:.9em;	
-	    }	
-	    .blog-section {	
-	        max-width:none !important ; /* Increased width of blog section */	
-	        margin:auto ;	
-	        padding:.5em ;	
-	        height:auto ;	
-	        overflow-y:auto ;	
-	        overflow-x:hidden ;	
-	        scrollbar-width:auto ; /* Aesthetically pleasing scrollbar for Firefox */	
-	    }	
-	    .blog-section::-webkit-scrollbar {	
-	        width:.8em ; /* Width of scrollbar */	
-	    }	
-	    .blog-section::-webkit-scrollbar-thumb {	
-	        background:#888 ; /* Color of scrollbar thumb */	
-	        border-radius:.4em ; /* Rounded corners */	
-	    }	
-	    .blog-section::-webkit-scrollbar-thumb:hover {	
-	        background:#555 ; /* Darker color on hover */	
-	    }	
-	    .theme-toggle {	
-	        margin-left:.5em ;	
-	        cursor:pointer ;	
-	    }	
-	    .theme-toggle i {	
-	        font-size:.9em ;	
-	        color:variables(nav-text-color); 	
-	    }  
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 10 40px;
+            background: none;
+            max-width: 1500px;
+            margin-top: 0;
+            padding-top: 80px;
+        }
+        .text-container {
+            flex: 1;
+            text-align: left;
+            padding: 5px;
+            max-width: 80%;
+            z-index: 1;
+            margin-top: 0;
+            margin-left: 50px;
+        }
+        .image-container {
+            flex: 1;
+            background: url('img/sunset.png') no-repeat center center;
+            background-size: cover;
+            height: 50%;
+            max-width: 45%;
+            margin-left: 130px;
+            margin-top: 0;
+            position: relative;
+        }
+        .image-caption {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .bottom-section {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .bottom-section img {
+            width: 100px;
+            height: auto;
+        }
+        h1 {
+            font-size: 2.3em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.0em;
+            margin-bottom: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .separator {
+            margin: 0 8px;
+            color: var(--nav-text-color);
+        }
+        nav .social-links a {
+            margin-left: 12px;
+            color: var(--nav-text-color);
+            text-decoration: none;
+            font-size: 1.3em;
+        }
+        .blog-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 50px;
+            height: auto;
+            max-height: 400px;
+            overflow-x: hidden;
+        }
+        .theme-toggle {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .theme-toggle i {
+            font-size: 20px;
+            color: var(--nav-text-color);
+        }
     </style>
 </head>
 <body>
@@ -208,97 +200,87 @@
     </nav>
     <header class="intro-header">
         <div class="text-container">
-           <h1>Hello! <span class="emoji">👋</span></h1>
-           <p>Welcome to my space!</p>
-           <p>I'm passionate about coding, design, and creating innovative solutions to complex problems. With a love for creativity, I'm always looking to learn something new and explore different fields of technology. When I'm not working, you'll find me reading, hiking, or playing sports.</p>
-           <p>In a previous life, I wanted to become an F1 driver and rule the Monaco Grand Prix.</p>
-           <p>I come from Himachal, India. This winter, I'm strapping in, falling down, and getting back up while I master snowboarding in Aspen.</p>
-           <div class="bottom-section">
-               <p>Take a look around!</p>
-               <img src="img/milk-transformed.png" alt="Milk Transformed Image">
-           </div>
-       </div>
-       <div class="image-container">
-           <p></p>
-           <div class="image-caption">Hi, I'm Taniya</div>
-       </div>
-   </header>
-   <div class="blog-section">
-       <div class="container">
-           <div class="row">
-               <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                   <div class="post-preview">
-                       <a href="post.html">
-                           <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                           <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
-                       </a>
-                       <p class="post-meta">Posted by <a href="#">TaCha</a> on September 24, 2024</p>
-                   </div>
-                   <hr>
-                   <div class="post-preview">
-                       <a href="post.html">
-                           <h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2>
-                       </a>
-                       <p class="post-meta">Posted by <a href="#">TaCha</a> on September 18, 2024</p>
-                   </div>
-                   <hr>
-                   <div class="post-preview">
-                       <a href="post.html">
-                           <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                           <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
-                       </a>
-                       <p class="post-meta">Posted by <a href="#">TaCha</a> on August 24, 2024</p>
-                   </div>
-                   <hr>
-                   <div class="post-preview">
-                       <a href "post.html">
-                           <<h2 class= "post-title">Failure is not an option</h2 >
-                           <<h3 class= "post-subtitle">Many say exploration is part of our destiny but it's actually our duty to future generations.</h3 >
-                       </a >
-                       <<p class= "post-meta">Posted by<a href="#">TaCha</a > on July 8 ,2014
-                       </p >
-                   </div >
-                   <<hr >
-                   <<ul class= "pager"
-                      ><li
-                      ><a href="#"
-                      >Older Posts &rarr;</a
-                      ></li
-                      ></ul
-                   >
-               </div >
-           </div >
-       </div >
-   </div >
-   <<footer
-      ><div
-      >Copyright &copy ; TaCha
-      ></div >  
-   <
-   /footer
-   ><script src = "vendor/jquery/jquery.min.js"
-   ></script ><script src = "vendor/bootstrap/js/bootstrap.min.js"
-   ></script ><script src = "js/clean-blog.min.js"
-   ></script ><script >
-      const themeIcon = document.getElementById('theme-icon');
-      let isDarkMode = false;
-
-      function toggleTheme() {
-          isDarkMode = !isDarkMode;
-
-          if (isDarkMode) {
-              document.documentElement.setAttribute('data-theme', 'dark');
-              themeIcon.classList.replace('fa-moon', 'fa-sun');
-          } else {
-              document.documentElement.setAttribute('data-theme', 'light');
-              themeIcon.classList.replace('fa-sun', 'fa-moon');
-          }
-      }
-
-      themeIcon.addEventListener('click', toggleTheme);
-   <
-   /script
-   ></body >  
-   <
-   /html
-   >
+            <h1>Hello! <span class="emoji">👋</span></h1>
+            <p>Welcome to my space!</p>
+            <p>I'm passionate about coding, design, and creating innovative solutions to complex problems. With a love for creativity, I'm always looking to learn something new and explore different fields of technology. When I'm not working, you'll find me reading, hiking, or playing sports.</p>
+            <p>In a previous life, I wanted to become an F1 driver and rule the Monaco Grand Prix.</p>
+            <p>I come from Himachal, India. This winter, I'm strapping in, falling down, and getting back up while I master snowboarding in Aspen.</p>
+            <div class="bottom-section">
+                <p>Take a look around!</p>
+                <img src="img/milk-transformed.png" alt="Milk Transformed Image">
+            </div>
+        </div>
+        <div class="image-container">
+            <p></p>
+            <div class="image-caption">Hi, I'm Taniya</div>
+        </div>
+    </header>
+    <div class="blog-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
+                            <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#">TaCha</a> on September 24, 2024</p>
+                    </div>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#">TaCha</a> on September 18, 2024</p>
+                    </div>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">Science has not yet mastered prophecy</h2>
+                            <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#">TaCha</a> on August 24, 2024</p>
+                    </div>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">Failure is not an option</h2>
+                            <h3 class="post-subtitle">Many say exploration is part of our destiny, but it's actually our duty to future generations.</h3>
+                        </a>
+                        <p class="post-meta">Posted by <a href="#">TaCha</a> on July 8, 2014</p>
+                    </div>
+                    <hr>
+                    <ul class="pager">
+                        <li class="next">
+                            <a href="#">Older Posts &rarr;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <p>Copyright &copy; TaCha</p>
+        </div>
+    </footer>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/clean-blog.min.js"></script>
+    <script>
+        const themeIcon = document.getElementById('theme-icon');
+        let isDarkMode = false;
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+        themeIcon.addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html>
