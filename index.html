@@ -1,4 +1,4 @@
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -33,6 +33,7 @@
             font-family: Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
+            overflow-x: hidden;
         }
         nav {
             background-color: var(--nav-bg-color);
@@ -89,13 +90,14 @@
         }
         header.intro-header {
             position: relative;
-            height: 120vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             padding: 10 40px;
             background: none;
             max-width: 1500px;
-            margin-top: 30px;
+            margin-top: 0;
+            padding-top: 80px;
         }
         .text-container {
             flex: 1;
@@ -103,7 +105,7 @@
             padding: 5px;
             max-width: 80%;
             z-index: 1;
-            margin-top: 60px;
+            margin-top: 0;
             margin-left: 50px;
         }
         .image-container {
@@ -113,12 +115,12 @@
             height: 50%;
             max-width: 45%;
             margin-left: 130px;
-            margin-top: 60px;
+            margin-top: 0;
             position: relative;
         }
         .image-caption {
             position: absolute;
-            bottom: -30px;
+            bottom: -50px;
             left: 0;
             width: 100%;
             text-align: center;
@@ -159,8 +161,9 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 0 50px;
-            height: 400px;
-            overflow-y: auto;
+            height: auto;
+            max-height: 400px;
+            overflow-x: hidden;
         }
         .theme-toggle {
             margin-left: 10px;
@@ -208,7 +211,7 @@
             </div>
         </div>
         <div class="image-container">
-             <p></p>
+            <p></p>
             <div class="image-caption">Hi, I'm Taniya</div>
         </div>
     </header>
