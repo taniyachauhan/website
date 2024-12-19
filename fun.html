@@ -1,1 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Journey</title>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --nav-bg-color: #ffffff;
+            --nav-text-color: rgba(9, 12, 67);
+        }
+        [data-theme="dark"] {
+            --bg-color: #333333;
+            --text-color: #ffffff;
+            --nav-bg-color: #222222;
+            --nav-text-color: #ffffff;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        nav {
+            background-color: var(--nav-bg-color);
+            color: var(--nav-text-color);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--nav-text-color);
+            text-decoration: none;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        nav ul li {
+            margin-right: 15px;
+        }
+        nav .social-links {
+            display: flex;
+            align-items: center;
+        }
+        .social-logo {
+            width: 20px;
+            height: auto;
+            margin-left: 10px;
+        }
+        nav ul li a {
+            color: var(--nav-text-color);
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .separator {
+            margin: 0 8px;
+            color: var(--nav-text-color);
+        }
+        .theme-toggle {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .theme-toggle i {
+            font-size: 20px;
+            color: var(--nav-text-color);
+        }
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 80px 20px 20px;
+        }
+        .section {
+            width: 300px;
+            height: 300px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .section img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .section h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .section p {
+            font-size: 0.9em;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--nav-bg-color);
+            color: var(--nav-text-color);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="index.html" class="logo">TaCha</a>
+            <div class="theme-toggle">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </div>
+        </div>
+        <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blogpage.html">Resume</a></li>
+            <li><a href="post.html">Blog</a></li>
+            <span class="separator">|</span>
+            <li class="social-links">
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="img/linkedin.png" alt="LinkedIn" class="social-logo">
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <img src="img/twitter.png" alt="X" class="social-logo">
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="section">
+            <img src="img/hiking.jpg" alt="Hiking Journey">
+            <h2>My Hiking Journey</h2>
+            <p>From novice trails to challenging peaks, my hiking adventures have taken me through breathtaking landscapes and pushed my limits.</p>
+        </div>
+        <div class="section">
+            <img src="img/reading.jpg" alt="Reading Progress">
+            <h2>Reading Progress</h2>
+            <p>Exploring new worlds through books, I've embarked on a literary journey that has expanded my horizons and fueled my imagination.</p>
+        </div>
+        <div class="section">
+            <img src="img/sports.jpg" alt="Sports Story">
+            <h2>My Sports Story</h2>
+            <p>From casual games to competitive matches, sports have become an integral part of my life, teaching me teamwork and perseverance.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Copyright &copy; TaCha</p>
+        </div>
+    </footer>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/clean-blog.min.js"></script>
+    <script>
+        const themeIcon = document.getElementById('theme-icon');
+        let isDarkMode = false;
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+        themeIcon.addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html>
 
