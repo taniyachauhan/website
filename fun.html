@@ -87,39 +87,54 @@
         }
         .content {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
             padding: 80px 20px 20px;
         }
         .section {
-            width: 300px;
-            height: 300px;
-            margin: 20px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-        .section img {
+            display: flex;
             width: 100%;
-            height: 150px;
+            max-width: 1000px;
+            margin-bottom: 40px;
+        }
+        .section.reverse {
+            flex-direction: row-reverse;
+        }
+        .image-container {
+            flex: 1;
+            padding: 20px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
             object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            border-radius: 10px;
         }
-        .section h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        .text-container {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .section p {
-            font-size: 0.9em;
+        .text-container h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .text-container p {
+            font-size: 1em;
+            line-height: 1.6;
         }
         footer {
             text-align: center;
             padding: 20px 0;
             background-color: var(--nav-bg-color);
             color: var(--nav-text-color);
+        }
+        @media (max-width: 768px) {
+            .section, .section.reverse {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -149,19 +164,31 @@
 
     <div class="content">
         <div class="section">
-            <img src="img/hiking.jpg" alt="Hiking Journey">
-            <h2>My Hiking Journey</h2>
-            <p>From novice trails to challenging peaks, my hiking adventures have taken me through breathtaking landscapes and pushed my limits.</p>
+            <div class="image-container">
+                <img src="img/hiking.jpg" alt="Hiking Journey">
+            </div>
+            <div class="text-container">
+                <h2>My Hiking Journey</h2>
+                <p>From novice trails to challenging peaks, my hiking adventures have taken me through breathtaking landscapes and pushed my limits.</p>
+            </div>
+        </div>
+        <div class="section reverse">
+            <div class="image-container">
+                <img src="img/reading.jpg" alt="Reading Progress">
+            </div>
+            <div class="text-container">
+                <h2>Reading Progress</h2>
+                <p>Exploring new worlds through books, I've embarked on a literary journey that has expanded my horizons and fueled my imagination.</p>
+            </div>
         </div>
         <div class="section">
-            <img src="img/reading.jpg" alt="Reading Progress">
-            <h2>Reading Progress</h2>
-            <p>Exploring new worlds through books, I've embarked on a literary journey that has expanded my horizons and fueled my imagination.</p>
-        </div>
-        <div class="section">
-            <img src="img/sports.jpg" alt="Sports Story">
-            <h2>My Sports Story</h2>
-            <p>From casual games to competitive matches, sports have become an integral part of my life, teaching me teamwork and perseverance.</p>
+            <div class="image-container">
+                <img src="img/sports.jpg" alt="Sports Story">
+            </div>
+            <div class="text-container">
+                <h2>My Sports Story</h2>
+                <p>From casual games to competitive matches, sports have become an integral part of my life, teaching me teamwork and perseverance.</p>
+            </div>
         </div>
     </div>
 
@@ -191,4 +218,3 @@
     </script>
 </body>
 </html>
-
