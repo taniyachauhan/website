@@ -104,7 +104,10 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .section:nth-child(even) {
-            flex-direction: row-reverse;
+            margin-left: auto;
+        }
+        .section:nth-child(odd) {
+            margin-right: auto;
         }
         .image-container {
             flex: 1;
@@ -179,8 +182,10 @@
             color: var(--nav-text-color);
         }
         @media (max-width: 768px) {
-            .section, .section:nth-child(even) {
+            .section {
                 flex-direction: column;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
         }
     </style>
