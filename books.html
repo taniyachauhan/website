@@ -1,159 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+  (function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+</script>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Reviews</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Books — TaCha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --bg:     #f4f3ee;
+            --text:   #111111;
+            --muted:  rgba(10,10,10,0.52);
+            --border: rgba(0,0,0,0.11);
+        }
+        [data-theme="dark"] {
+            --bg:     #0a0a0a;
+            --text:   #f0f0f0;
+            --muted:  rgba(240,240,240,0.55);
+            --border: rgba(255,255,255,0.1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: 'Lora', serif;
-            background-color: #1f3a93;
-            color: white;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            background-color: var(--bg);
+            color: var(--text);
+            font-size: 14px; line-height: 1.75;
+            transition: background-color 0.35s, color 0.35s;
         }
-        .bio {
-            text-align: center;
-            margin: 50px auto;
-            max-width: 900px;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
+
+        body::after {
+            content: ''; position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.018; pointer-events: none; z-index: 9999;
         }
-        .bio h1 {
-            font-size: 2.5rem;
-            color: #6dd5ed;
+
+        /* ── NAV ─────────────────────────────────────── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+            background: var(--bg); border-bottom: 1px solid var(--border);
+            transition: background-color 0.35s;
         }
-        .bio p {
-            font-size: 1.1rem;
-            color: #a2d5f2;
+        .nav-inner {
+            max-width: 820px; margin: 0 auto; padding: 16px 40px;
+            display: flex; align-items: center; justify-content: space-between;
         }
-        .books-section {
+        .nav-left { display: flex; align-items: center; gap: 14px; }
+        .logo { font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: var(--text); text-decoration: none; transition: opacity 0.2s; }
+        .logo:hover { opacity: 0.6; }
+        .theme-btn { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 13px; padding: 2px; display: flex; align-items: center; transition: color 0.2s; }
+        .theme-btn:hover { color: var(--text); }
+        .nav-right { display: flex; align-items: center; gap: 24px; }
+        .nav-link { position: relative; font-size: 12px; font-weight: 300; letter-spacing: 0.03em; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--text); transition: width 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: var(--text); }
+        .nav-link:hover::after { width: 100%; }
+        .nav-sep { color: var(--border); }
+        .nav-social { display: flex; gap: 14px; }
+        .nav-social a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+        .nav-social a:hover { color: var(--text); }
+
+        /* ── CONTENT ─────────────────────────────────── */
+        main {
+            max-width: 820px; margin: 0 auto;
+            padding: 120px 40px 80px;
+        }
+
+        .page-header { margin-bottom: 52px; }
+        .page-tag {
+            font-size: 11px; font-weight: 300; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+        }
+        .page-header h1 {
+            font-size: 22px; font-weight: 400; color: var(--text);
+            letter-spacing: -0.01em; margin-bottom: 10px;
+        }
+        .page-header p {
+            font-size: 12px; font-weight: 300; color: var(--muted);
+            max-width: 440px; line-height: 1.8;
+        }
+
+        /* ── CURRENTLY READING ───────────────────────── */
+        .currently-reading {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 48px; padding: 16px 20px;
+            border: 1px solid var(--border); border-radius: 3px;
+            background: transparent;
+        }
+        .cr-label {
+            font-size: 10px; font-weight: 300; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--muted); white-space: nowrap;
+        }
+        .cr-divider { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+        .cr-book { display: flex; flex-direction: column; gap: 2px; }
+        .cr-title { font-size: 13px; font-weight: 400; color: var(--text); }
+        .cr-author { font-size: 11px; font-weight: 300; color: var(--muted); }
+        .cr-pulse {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--text); flex-shrink: 0; margin-left: auto;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+
+        /* ── FILTER TABS ─────────────────────────────── */
+        .shelf-tabs {
+            display: flex; gap: 4px; margin-bottom: 36px; flex-wrap: wrap;
+        }
+        .shelf-tab {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px; font-weight: 300; letter-spacing: 0.08em;
+            text-transform: capitalize; background: none;
+            border: 1px solid var(--border); color: var(--muted);
+            padding: 5px 14px; cursor: pointer; border-radius: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .shelf-tab:hover,
+        .shelf-tab.active { color: var(--text); border-color: var(--text); }
+
+        /* ── BOOK LIST ───────────────────────────────── */
+        .book-list { list-style: none; border-top: 1px solid var(--border); }
+
+        .book-entry {
+            border-bottom: 1px solid var(--border);
+            padding: 18px 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
         }
-        .book {
-            position: relative;
-            width: 200px;
-            cursor: pointer;
-            text-align: center;
-            transition: transform 0.3s ease;
+
+        .book-rating {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 4px;
+            min-width: 26px; padding-top: 3px;
         }
-        .book:hover {
-            transform: scale(1.1);
+        .stars { font-size: 9px; letter-spacing: 1px; color: var(--border); }
+        .stars .on { color: var(--text); }
+        .score-num { font-size: 10px; font-weight: 300; color: var(--muted); }
+
+        .book-info { flex: 1; min-width: 0; }
+        .book-top {
+            display: flex; justify-content: space-between;
+            align-items: baseline; gap: 16px; margin-bottom: 4px;
         }
-        .book img {
-            width: 100%;
-            border-radius: 10px;
+        .book-title { font-size: 13px; font-weight: 400; color: var(--text); }
+        .book-year  { font-size: 11px; font-weight: 300; color: var(--muted); white-space: nowrap; flex-shrink: 0; text-transform: capitalize; }
+        .book-author { font-size: 11px; font-weight: 300; color: var(--muted); margin-bottom: 8px; }
+        .book-note {
+            font-size: 12px; font-weight: 300; color: var(--muted);
+            line-height: 1.75; max-width: 540px;
         }
-        .book h3 {
-            color: #a2d5f2;
-            font-size: 1.2rem;
-            margin-top: 10px;
+        .book-title-group { display: flex; align-items: center; gap: 10px; min-width: 0; }
+        .book-tag {
+            font-size: 10px; font-weight: 300; letter-spacing: 0.08em;
+            text-transform: capitalize; color: var(--muted);
+            border: 1px solid var(--border); padding: 2px 7px; border-radius: 2px;
+            white-space: nowrap; flex-shrink: 0;
         }
-        .animation-container {
-            display: none;
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.9);
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-        .animation-container .book-open-animation {
-            width: 70%;
-            max-width: 600px;
-        }
-        .review-text {
-            display: none;
-            color: white;
-            font-size: 1.1rem;
-            text-align: center;
-            max-width: 700px;
-            padding: 20px;
-            margin-top: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-        }
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            font-size: 1.5rem;
-            color: #fff;
-            cursor: pointer;
+
+        /* ── FOOTER ──────────────────────────────────── */
+        footer { padding: 24px 40px 20px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 300; color: var(--muted); text-align: center; }
+
+        /* ── RESPONSIVE ──────────────────────────────── */
+        @media (max-width: 700px) {
+            .nav-inner { padding: 14px 20px; }
+            .nav-sep, .nav-social { display: none; }
+            main, footer { padding-left: 20px; padding-right: 20px; }
+            main { padding-top: 90px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bio">
-        <h1>My Journey into Books</h1>
-        <p>It all began with a spark—a friend handed me a book, and that simple act opened up an entire world. Now, books are more than just stories; they're my source of inspiration, knowledge, and a little bit of magic in everyday life.</p>
-    </div>
-
-    <div class="books-section">
-        <div class="book" onclick="openReview('review1')">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/51Z0nLAfLmL._SX327_BO1,204,203,200_.jpg" alt="The Alchemist">
-            <h3>The Alchemist</h3>
+<nav>
+    <div class="nav-inner">
+        <div class="nav-left">
+            <a href="index.html" class="logo">TaCha</a>
+            <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+                <i class="fas fa-sun" id="themeIcon"></i>
+            </button>
         </div>
-        <div class="book" onclick="openReview('review2')">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/81J1HStQjuL.jpg" alt="The Secret">
-            <h3>The Secret</h3>
-        </div>
-        <div class="book" onclick="openReview('review3')">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/71aFt4+OTOL.jpg" alt="Midnight Library">
-            <h3>Midnight Library</h3>
-        </div>
-        <div class="book" onclick="openReview('review4')">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL.jpg" alt="Atomic Habits">
-            <h3>Atomic Habits</h3>
+        <div class="nav-right">
+            <a href="about.html"    class="nav-link">About</a>
+            <a href="fun.html"      class="nav-link">Blog</a>
+            <a href="books.html"    class="nav-link active">Books</a>
+            <span class="nav-sep">|</span>
+            <div class="nav-social">
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
         </div>
     </div>
+</nav>
 
-    <!-- Animation Container -->
-    <div class="animation-container" id="animation-container">
-        <div class="book-open-animation">
-            <img src="img/book-opening.gif" alt="Book Opening Animation" id="book-animation">
+<main>
+    <header class="page-header">
+        <h1>Books</h1>
+        <p>Everything I've read, rated honestly. No summaries — just how they landed.</p>
+    </header>
+
+    <div class="currently-reading">
+        <span class="cr-label">Currently Reading</span>
+        <div class="cr-divider"></div>
+        <div class="cr-book">
+            <span class="cr-title">A Happy Death</span>
+            <span class="cr-author">Albert Camus</span>
         </div>
-        <span class="close" onclick="closeReview()">×</span>
-        <div class="review-text" id="review1">
-            <p><strong>The Alchemist</strong> - A tale about following your dreams, no matter the obstacles. It reminds us that the journey is as important as the destination. A poetic and profound reflection on life.</p>
-        </div>
-        <div class="review-text" id="review2">
-            <p><strong>The Secret</strong> - This book is all about the power of positivity and belief. If you can visualize and believe, you can attract anything. A thought-provoking introduction to the law of attraction.</p>
-        </div>
-        <div class="review-text" id="review3">
-            <p><strong>Midnight Library</strong> - What if you could live your life differently? This story explores parallel lives and the choices we make. An emotional and philosophical ride through regret, hope, and possibility.</p>
-        </div>
-        <div class="review-text" id="review4">
-            <p><strong>Atomic Habits</strong> - A blueprint for making lasting change through small, daily habits. This book is essential for anyone looking to improve their life step by step. It’s practical and motivational.</p>
-        </div>
+        <div class="cr-pulse"></div>
     </div>
 
-    <script>
-        function openReview(reviewId) {
-            document.getElementById('animation-container').style.display = 'flex';
-            setTimeout(() => {
-                document.getElementById(reviewId).style.display = 'block';
-            }, 1000); // Simulate book pages turning animation
-        }
+    <div class="shelf-tabs">
+        <button class="shelf-tab active" data-filter="all">all</button>
+        <button class="shelf-tab" data-filter="fiction">fiction</button>
+        <button class="shelf-tab" data-filter="non-fiction">non-fiction</button>
+        <button class="shelf-tab" data-filter="philosophy">philosophy</button>
+        <button class="shelf-tab" data-filter="favourite">favourites ★</button>
+    </div>
 
-        function closeReview() {
-            document.getElementById('animation-container').style.display = 'none';
-            const reviews = document.querySelectorAll('.review-text');
-            reviews.forEach(review => review.style.display = 'none');
-        }
-    </script>
+    <ul class="book-list">
 
+        <li class="book-entry" data-shelf="fiction" data-fav="true">
+            <div class="book-rating">
+                <div class="stars"><span class="on">★★★★★</span></div>
+                <span class="score-num">5/5</span>
+            </div>
+            <div class="book-info">
+                <div class="book-top">
+                    <div class="book-title-group"><span class="book-title">The Midnight Library</span><span class="book-tag">fiction</span></div>
+                    <span class="book-year">read 2024</span>
+                </div>
+                <p class="book-author">Matt Haig</p>
+            </div>
+        </li>
+
+        <li class="book-entry" data-shelf="philosophy">
+            <div class="book-rating">
+                <div class="stars"><span class="on">★★★★</span>★</div>
+                <span class="score-num">4/5</span>
+            </div>
+            <div class="book-info">
+                <div class="book-top">
+                    <div class="book-title-group"><span class="book-title">The Courage to Be Disliked</span><span class="book-tag">philosophy</span></div>
+                    <span class="book-year">read 2024</span>
+                </div>
+                <p class="book-author">Ichiro Kishimi &amp; Fumitake Koga</p>
+            </div>
+        </li>
+
+        <li class="book-entry" data-shelf="non-fiction">
+            <div class="book-rating">
+                <div class="stars"><span class="on">★★★★</span>★</div>
+                <span class="score-num">4/5</span>
+            </div>
+            <div class="book-info">
+                <div class="book-top">
+                    <div class="book-title-group"><span class="book-title">Why We Sleep</span><span class="book-tag">non-fiction</span></div>
+                    <span class="book-year">read 2024</span>
+                </div>
+                <p class="book-author">Matthew Walker</p>
+            </div>
+        </li>
+
+        <li class="book-entry" data-shelf="non-fiction" data-fav="true">
+            <div class="book-rating">
+                <div class="stars"><span class="on">★★★★★</span></div>
+                <span class="score-num">5/5</span>
+            </div>
+            <div class="book-info">
+                <div class="book-top">
+                    <div class="book-title-group"><span class="book-title">Educated</span><span class="book-tag">non-fiction</span></div>
+                    <span class="book-year">read 2023</span>
+                </div>
+                <p class="book-author">Tara Westover</p>
+            </div>
+        </li>
+
+        <li class="book-entry" data-shelf="non-fiction">
+            <div class="book-rating">
+                <div class="stars"><span class="on">★★★★</span>★</div>
+                <span class="score-num">4/5</span>
+            </div>
+            <div class="book-info">
+                <div class="book-top">
+                    <div class="book-title-group"><span class="book-title">Atomic Habits</span><span class="book-tag">non-fiction</span></div>
+                    <span class="book-year">read 2023</span>
+                </div>
+                <p class="book-author">James Clear</p>
+            </div>
+        </li>
+
+        <li class="book-entry" data-shelf="philosophy">
+            <div class="book-rating">
+                <div class="stars"><span class="on">★★★</span>★★</div>
+                <span class="score-num">3/5</span>
+            </div>
+            <div class="book-info">
+                <div class="book-top">
+                    <div class="book-title-group"><span class="book-title">Man's Search for Meaning</span><span class="book-tag">philosophy</span></div>
+                    <span class="book-year">read 2023</span>
+                </div>
+                <p class="book-author">Viktor E. Frankl</p>
+            </div>
+        </li>
+
+        <li class="book-entry" data-shelf="fiction">
+            <div class="book-rating">
+                <div class="stars"><span class="on">★★★★</span>★</div>
+                <span class="score-num">4/5</span>
+            </div>
+            <div class="book-info">
+                <div class="book-top">
+                    <div class="book-title-group"><span class="book-title">The Alchemist</span><span class="book-tag">fiction</span></div>
+                    <span class="book-year">read 2022</span>
+                </div>
+                <p class="book-author">Paulo Coelho</p>
+            </div>
+        </li>
+
+        <li class="book-entry" data-shelf="fiction" data-fav="true">
+            <div class="book-rating">
+                <div class="stars"><span class="on">★★★★★</span></div>
+                <span class="score-num">5/5</span>
+            </div>
+            <div class="book-info">
+                <div class="book-top">
+                    <div class="book-title-group"><span class="book-title">A Little Life</span><span class="book-tag">fiction</span></div>
+                    <span class="book-year">read 2022</span>
+                </div>
+                <p class="book-author">Hanya Yanagihara</p>
+            </div>
+        </li>
+
+    </ul>
+</main>
+
+<footer><p>© TaCha</p></footer>
+
+<script>
+    const btn=document.getElementById('themeBtn');
+    const icon=document.getElementById('themeIcon');
+    function applyTheme(dark){
+        document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+        icon.className=dark?'fas fa-moon':'fas fa-sun';
+        localStorage.setItem('theme',dark?'dark':'light');
+    }
+    let dark=(localStorage.getItem('theme')||'dark')==='dark';
+    applyTheme(dark);
+    btn.addEventListener('click',()=>{dark=!dark;applyTheme(dark);});
+
+    // Shelf filter
+    const tabs  = document.querySelectorAll('.shelf-tab');
+    const items = document.querySelectorAll('.book-entry');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const filter = tab.dataset.filter;
+            items.forEach(item => {
+                const shelf = item.dataset.shelf;
+                const fav   = item.dataset.fav === 'true';
+                const show  = filter === 'all'
+                    || shelf === filter
+                    || (filter === 'favourite' && fav);
+                item.style.display = show ? 'flex' : 'none';
+            });
+        });
+    });
+</script>
 </body>
 </html>

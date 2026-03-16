@@ -1,272 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+  (function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+</script>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>👻 TaCha</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Theme CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>TaCha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --nav-bg-color: #ffffff;
-            --nav-text-color: rgba(9, 12, 67);
+            --bg:     #f4f3ee;
+            --text:   #050505;
+            --muted:  rgba(5,5,5,0.5);
+            --border: rgba(0,0,0,0.1);
         }
         [data-theme="dark"] {
-            --bg-color: #333333;
-            --text-color: #ffffff;
-            --nav-bg-color: #222222;
-            --nav-text-color: #ffffff;
+            --bg:     #0a0a0a;
+            --text:   #f5f5f5;
+            --muted:  rgba(245,245,245,0.52);
+            --border: rgba(255,255,255,0.1);
         }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { overflow-x: hidden; }
         body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            background-color: var(--bg);
+            color: var(--text);
+            font-size: 14px; line-height: 1.75;
+            transition: background-color 0.35s, color 0.35s;
             overflow-x: hidden;
         }
+
+        body::after {
+            content: ''; position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.018; pointer-events: none; z-index: 9999;
+        }
+
+        /* ── NAV ─────────────────────────────────────── */
         nav {
-            background-color: var(--nav-bg-color);
-            color: var(--nav-text-color);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+            background: var(--bg); border-bottom: 1px solid var(--border);
+            transition: background-color 0.35s;
         }
-        .logo-container {
-            display: flex;
-            align-items: center;
+        .nav-inner {
+            max-width: 820px; margin: 0 auto; padding: 16px 40px;
+            display: flex; align-items: center; justify-content: space-between;
         }
-        nav .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--nav-text-color);
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-            align-items: center;
-        }
-        nav ul li {
-            margin-right: 15px;
-        }
-        nav .social-links {
-            display: flex;
-            align-items: center;
-        }
-        .social-logo {
-            width: 20px;
-            height: auto;
-            margin-left: 10px;
-        }
-        nav ul li a {
-            color: var(--nav-text-color);
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-        main {
-            padding: 60px 60px;
-            z-index: 1;
+        .nav-left { display: flex; align-items: center; gap: 14px; }
+        .logo { font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: var(--text); text-decoration: none; transition: opacity 0.2s; }
+        .logo:hover { opacity: 0.55; }
+        .theme-btn { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 13px; padding: 2px; display: flex; align-items: center; transition: color 0.2s; }
+        .theme-btn:hover { color: var(--text); }
+        .nav-right { display: flex; align-items: center; gap: 24px; }
+        .nav-link { position: relative; font-size: 12px; font-weight: 300; letter-spacing: 0.03em; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--text); transition: width 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: var(--text); }
+        .nav-link:hover::after { width: 100%; }
+        .nav-sep { color: var(--border); }
+        .nav-social { display: flex; gap: 14px; }
+        .nav-social a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+        .nav-social a:hover { color: var(--text); }
+
+        /* ── BANNER (with profile overlay inside) ───── */
+        .banner-wrap {
+            max-width: 820px; margin: 0 auto;
+            padding: 58px 40px 0;
             position: relative;
-            background-color: var(--bg-color);
-            max-width: 1200px;
-            margin: 0 auto;
         }
-        header.intro-header {
-            position: relative;
-            height: 80vh;
-            display: flex;
-            align-items: flex-start;
-            padding: 10 40px;
-            background: none;
-            max-width: 1500px;
-            margin-top: 70px;
+        .banner-wrap .banner-img {
+            width: 100%; height: 240px;
+            object-fit: cover; display: block;
+            -webkit-mask-image:
+                linear-gradient(to right,  transparent, black 5%, black 95%, transparent),
+                linear-gradient(to bottom, transparent, black 2%, black 88%, transparent);
+            mask-image:
+                linear-gradient(to right,  transparent, black 5%, black 95%, transparent),
+                linear-gradient(to bottom, transparent, black 2%, black 88%, transparent);
+            -webkit-mask-composite: source-in;
+            mask-composite: intersect;
         }
-        .text-container {
-            flex: 1;
-            text-align: left;
-            padding: 5px;
-            max-width: 37%;
-            z-index: 1;
-            margin-top: 55px;
-            margin-left: 250px;
-        }
-        .image-container {
-            flex: 1;
-            background: url('img/susnet.png') no-repeat center center;
-            background-size: cover;
-            height:55%;
-            max-width: 24%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 45px;
-            position: relative;
-            padding-bottom: 100px;
-        }
-        .image-caption {
+        /* dark scrim at bottom so text is readable */
+        .banner-overlay {
             position: absolute;
-            bottom: -160px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px 0;
+            bottom: 0; left: 40px; right: 40px;
+            border-radius: 0 0 4px 4px;
+            padding: 36px 22px 18px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.62));
+            display: flex; align-items: flex-end; gap: 14px;
         }
-        .bottom-section {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+        .profile-avatar {
+            width: 68px; height: 68px; border-radius: 50%;
+            object-fit: cover; border: 2px solid rgba(255,255,255,0.7);
+            display: block; flex-shrink: 0;
         }
-        .bottom-section img {
-            width: 100px;
-            height: auto;
+        .profile-info { display: flex; flex-direction: column; gap: 1px; }
+        .profile-name {
+            font-size: 14px; font-weight: 500; color: #ffffff;
+            letter-spacing: 0.01em; line-height: 1.2;
         }
-        h1 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
+        .profile-role {
+            font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.75);
+            letter-spacing: 0.04em;
         }
-        p {
-            font-size: 0.9em;
-            margin-bottom: 20px;
+
+        /* ── HERO ────────────────────────────────────── */
+        .hero { max-width: 820px; margin: 0 auto; padding: 32px 40px 0; }
+        .hero-greeting {
+            font-size: 108px; font-weight: 400; color: var(--text);
+            letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.0;
         }
-        footer {
-            text-align: center;
-            padding: 20px 0;
+        .hero-name { font-size: 18px; font-weight: 300; color: var(--muted); margin-bottom: 28px; }
+        .hero p { font-size: 13px; font-weight: 300; color: var(--text); line-height: 1.9; max-width: 500px; margin-bottom: 14px; }
+
+        /* static bear inline with Aspen text */
+        .bear-inline { width: 56px; height: auto; vertical-align: middle; margin-left: 6px; display: inline-block; }
+
+        /* ── MID ROW: favourites LEFT, highlights RIGHT */
+        .mid-row {
+            max-width: 820px; margin: 0 auto;
+            padding: 80px 40px 70px;
+            display: flex; gap: 60px; align-items: flex-start;
         }
-        .separator {
-            margin: 0 7px;
-            color: var(--nav-text-color);
+        .faves-col { width: 240px; flex-shrink: 0; }
+        /* highlights pushed to the right edge of the banner */
+        .highlights-col { flex: 1; min-width: 0; max-width: 300px; margin-left: auto; }
+
+        /* highlights scroller */
+        .hl-scroll {
+            max-height: 320px; overflow-y: auto;
+            scrollbar-width: thin; scrollbar-color: var(--border) transparent;
         }
-        nav .social-links a {
-            margin-left: 12px;
-            color: var(--nav-text-color);
-            text-decoration: none;
-            font-size: 1.3em;
-        }
-        .blog-section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 50px;
-            height: auto;
-            max-height: 250px;
-            overflow-x: hidden;
-        }
-        .theme-toggle {
-            margin-left: 10px;
-            cursor: pointer;
-        }
-        .theme-toggle i {
-            font-size: 20px;
-            color: var(--nav-text-color);
+        .hl-section { margin-bottom: 28px; }
+        /* same font/size/weight as favourites title */
+        .hl-heading { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+        .hl-list { list-style: none; }
+        .hl-list li { display: flex; gap: 14px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--border); }
+        .hl-date { font-size: 10px; font-weight: 300; color: var(--muted); white-space: nowrap; min-width: 52px; }
+        .hl-text { font-size: 11px; font-weight: 300; color: var(--text); line-height: 1.6; }
+
+        /* favourites — no lines, minimal */
+        /* title matches hl-heading exactly */
+        .fave-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 18px; }
+        .fave-list { list-style: none; }
+        .fave-item { margin-bottom: 14px; font-size: 12px; color: var(--text); white-space: nowrap; }
+        .fave-key { font-weight: 300; color: var(--muted); }
+        .fave-main { font-weight: 400; }
+
+        /* ── FOOTER ──────────────────────────────────── */
+        footer { padding: 20px 40px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 300; color: var(--muted); text-align: center; }
+
+        /* ── RESPONSIVE ──────────────────────────────── */
+        @media (max-width: 700px) {
+            .nav-inner { padding: 14px 20px; }
+            .nav-sep, .nav-social { display: none; }
+            .banner-wrap, .hero, footer { padding-left: 20px; padding-right: 20px; }
+            .banner-wrap { padding-top: 58px; }
+            .banner-overlay { left: 20px; right: 20px; }
+            .hero-greeting { font-size: 52px; }
+            .mid-row { flex-direction: column; gap: 36px; padding-left: 20px; padding-right: 20px; }
+            .faves-col, .highlights-col { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="logo-container">
+
+<nav>
+    <div class="nav-inner">
+        <div class="nav-left">
             <a href="index.html" class="logo">TaCha</a>
-            <div class="theme-toggle">
-                <i class="fas fa-moon" id="theme-icon"></i>
+            <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+                <i class="fas fa-sun" id="themeIcon"></i>
+            </button>
+        </div>
+        <div class="nav-right">
+            <a href="about.html"    class="nav-link">About</a>
+            <a href="fun.html"      class="nav-link">Blog</a>
+            <a href="books.html"    class="nav-link">Books</a>
+            <span class="nav-sep">|</span>
+            <div class="nav-social">
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
         </div>
-        <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="blogpage.html">Resume</a></li>
-            <li><a href="fun.html">Blog</a></li>
-            <span class="separator">|</span>
-            <li class="social-links">
-                <a href="https://www.linkedin.com" target="_blank">
-                    <img src="img/linkedin.png" alt="LinkedIn" class="social-logo">
-                </a>
-                <a href="https://twitter.com" target="_blank">
-                    <img src="img/twitter.png" alt="X" class="social-logo">
-                </a>
-            </li>
+    </div>
+</nav>
+
+<!-- Banner with profile info overlaid inside — replace img srcs with your own photos -->
+<div class="banner-wrap">
+    <img src="img/susnet.png" class="banner-img" alt="banner">
+    <div class="banner-overlay">
+        <img src="img/new.jpg" class="profile-avatar" alt="Taniya Chauhan">
+        <div class="profile-info">
+            <span class="profile-name">Taniya Chauhan</span>
+            <span class="profile-role">[she/her]</span>
+        </div>
+    </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+    <p class="hero-greeting">Hello 👋</p>
+    <h1 class="hero-name">I'm Taniya Chauhan</h1>
+    <p>Welcome to my space!</p>
+    <p>I work as a software engineer. I enjoy coding, designing, and creating innovative solutions to complex problems. One of my life goals is to build something that outlives me.</p>
+    <p>I love traveling and exploring small coffee shops and vintage finds in quaint, rustic towns. When I'm not working, you'll find me reading, out in nature, or playing tennis.</p>
+    <p>In a previous life, I wanted to become an F1 driver.<img src="img/milk-transformed.png" class="bear-inline" alt="🐻"></p>
+</section>
+
+<!-- Favourites LEFT, Highlights RIGHT -->
+<div class="mid-row">
+
+    <!-- Favourites — clean, no lines, inline Key: Value -->
+    <div class="faves-col">
+        <p class="fave-title">Favourites</p>
+        <ul class="fave-list">
+            <li class="fave-item"><span class="fave-key">City: </span><span class="fave-main">New York & Seattle</span></li>
+            <li class="fave-item"><span class="fave-key">Food: </span><span class="fave-main">Pizza</span></li>
+            <li class="fave-item"><span class="fave-key">Restaurant: </span><span class="fave-main">Theodora, New York</span></li>
+            <li class="fave-item"><span class="fave-key">Coffee Shop: </span><span class="fave-main">Modcup Coffee, New Jersey</span></li>
+            <li class="fave-item"><span class="fave-key">Sport: </span><span class="fave-main">Formula 1</span></li>
+            <li class="fave-item"><span class="fave-key">Athlete: </span><span class="fave-main">Lionel Messi</span></li>
+            <li class="fave-item"><span class="fave-key">Book: </span><span class="fave-main">The Alchemist</span></li>
+            <li class="fave-item"><span class="fave-key">Season: </span><span class="fave-main">Spring</span></li>
         </ul>
-    </nav>
-    <header class="intro-header">
-        <div class="text-container">
-            <h1>Hello! <span class="emoji">👋</span></h1>
-            <p>Welcome to my space!</p>
-            <p>I'm a data engineer. I have a keen interest in coding, design, and creating innovative solutions to complex problems. With a love for creativity, I'm always looking to learn something new and explore different fields of technology. When I'm not working, you'll find me reading, hiking, or playing sports.</p>
-            <p>In a previous life, I wanted to become an F1 driver and rule the Monaco circuit.</p>
-            <p>I come from Himachal, India. This winter, I'm strapping in, falling down, and getting back up while I snowboard in Aspen.</p>
-            <div class="bottom-section">
-                <p>Take a look around!</p>
-                <img src="img/milk-transformed.png" alt="Milk Transformed Image">
+    </div>
+
+    <!-- Highlights (scrollable, right-aligned) -->
+    <div class="highlights-col">
+        <div class="hl-scroll">
+            <div class="hl-section">
+                <p class="hl-heading">Upcoming Highlights</p>
+                <ul class="hl-list">
+                    <li><span class="hl-date">2025-01</span><span class="hl-text">Starting a job hunt. Targeting a position in Seattle.</span></li>
+                    <li><span class="hl-date">2025-02</span><span class="hl-text">Visiting Colorado for snowboarding lessons.</span></li>
+                    <li><span class="hl-date">2025-01</span><span class="hl-text">Visiting Chicago.</span></li>
+                    <li><span class="hl-date">2025-03</span><span class="hl-text">Planning a road trip through the Pacific Northwest.</span></li>
+                </ul>
             </div>
-        </div>
-        <div class="image-container">
-            <p></p>
-            <div class="image-caption">
-                Hi, I'm Taniya<br><p></p>
-                [Taniya Chauhan]<br>
-                she/her<br>
-                Vitae ⋅ Bio ⋅ Fun
-            </div>
-        </div>
-    </header>
-    <div class="blog-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <h2>Upcoming Highlights:</h2>
-                    <ul>
-                      <li><strong>2025-01</strong>: Starting a job hunt. Targeting a job in Seattle.</li>
-                      <li><strong>2025-02</strong>: Visiting Colorado for snowboarding lessons.</li>
-                      <li><strong>2025-01</strong>: Visiting Chicago.</li>
-                    </ul>
-                    
-                    <h2>Past Highlights:</h2>
-                    <ul>
-                      <li><strong>2024-12</strong>: Visiting my most favourite city, Seattle in the whole wide world. Exploring the city and majestic Mount Rainier views.</li>
-                      <li><strong>2024-12</strong>: Finished reading 'The Midnight Library' by Matt Haig. Lovely book that gives you a whole new perspective on how you look at regrets.</li>
-                      <li><strong>2024-07</strong>: Finished reading 'The Courage to be Disliked'</li>
-                      <li><strong>2024-06</strong>: Started a new data migration project at work</li>
-                      <li><strong>2024-05-02</strong>: Gave an invited talk at EPFL.</li>
-                    </ul>
-                </div>
+            <div class="hl-section">
+                <p class="hl-heading">Past Highlights</p>
+                <ul class="hl-list">
+                    <li><span class="hl-date">2024-12</span><span class="hl-text">Visiting Seattle — exploring the city and majestic Mount Rainier views.</span></li>
+                    <li><span class="hl-date">2024-12</span><span class="hl-text">Finished reading 'The Midnight Library' by Matt Haig.</span></li>
+                    <li><span class="hl-date">2024-07</span><span class="hl-text">Finished reading 'The Courage to be Disliked'.</span></li>
+                    <li><span class="hl-date">2024-06</span><span class="hl-text">Started a new data migration project at work.</span></li>
+                    <li><span class="hl-date">2024-05</span><span class="hl-text">Gave an invited talk at EPFL.</span></li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>Copyright &copy; TaCha</p>
-        </div>
-    </footer>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/clean-blog.min.js"></script>
-    <script>
-        const themeIcon = document.getElementById('theme-icon');
-        let isDarkMode = false;
-        function toggleTheme() {
-            isDarkMode = !isDarkMode;
-            if (isDarkMode) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-            }
-        }
-        themeIcon.addEventListener('click', toggleTheme);
-    </script>
+</div>
+
+<footer><p>© TaCha</p></footer>
+
+<script>
+    const btn=document.getElementById('themeBtn');
+    const icon=document.getElementById('themeIcon');
+    function applyTheme(dark){
+        document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+        icon.className=dark?'fas fa-moon':'fas fa-sun';
+        localStorage.setItem('theme',dark?'dark':'light');
+    }
+    let dark=(localStorage.getItem('theme')||'dark')==='dark';
+    applyTheme(dark);
+    btn.addEventListener('click',()=>{dark=!dark;applyTheme(dark);});
+</script>
 </body>
 </html>
